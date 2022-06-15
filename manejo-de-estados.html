@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Canvas Básico</title>
+        <style>
+            #miCanvas
+            {
+                border: dotted 3px yellow;
+                background: green;
+            }
+        </style>
+        <script>
+            window.onload=function()
+            {
+                var canvas = document.getElementById("miCanvas");
+                if(canvas && canvas.getContext){
+                    var ctx = canvas.getContext("2d");
+                    if(ctx)
+                    {
+                        ctx.lineWidth=10;
+                        ctx.fillStyle="yellow";
+                        ctx.strokeStyle ="red";
+                        // Primer cuadro
+                        ctx.fillRect(50,50,100,100);
+                        ctx.strokeRect(50,50,100,100);
+                        // Salvamos estado
+                        ctx.save();
+                        // Modificamos los colores
+                        ctx.fillStyle="black";
+                        ctx.strokeStyle="white";
+                        // Segundo cuadro
+                        ctx.fillRect(200,50,100,100);
+                        ctx.strokeRect(200,50,100,100);
+                        // Restauramos colores
+                        ctx.restore();
+                        // Tercer cuadro
+                        ctx.fillRect(350,50,100,100);
+                        ctx.strokeRect(350,50,100,100);
+                        
+                    }
+                    else
+                    {
+                      alert("Error al crear el contexto");
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Conceptos básicos de CANVAS</h1>
+        <canvas id="miCanvas"width="500px"height="300px">
+            Tu navegador no soporta CANVAS
+        </canvas>
+    </body>
+</html>

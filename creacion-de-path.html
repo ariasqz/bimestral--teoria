@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Canvas Básico</title>
+        <style>
+            #miCanvas
+            {
+                border: dotted 3px yellow;
+                background: green;
+            }
+        </style>
+        <script>
+            window.onload=function()
+            {
+                var canvas = document.getElementById("miCanvas");
+                if(canvas && canvas.getContext){
+                    var ctx = canvas.getContext("2d");
+                    if(ctx)
+                    {
+                        // Descripcion de lineas
+                        ctx.lineWidth=10;
+                        ctx.strokeStyle = "yellow";
+                        ctx.fillStyle="red";
+                        // Path
+                        ctx.beginPath();
+                        ctx.moveTo(50,100);
+                        ctx.lineTo(100,50);
+                        ctx.lineTo(150,100);
+                        ctx.lineTo(100,150);
+                        ctx.stroke();
+                        // Path
+                        ctx.beginPath();
+                        ctx.moveTo(200,100);
+                        ctx.lineTo(250,50);
+                        ctx.lineTo(300,100);
+                        ctx.lineTo(250,150);
+                        ctx.closePath();
+                        ctx.stroke();
+                        // Path
+                        ctx.beginPath();
+                        ctx.moveTo(350,100);
+                        ctx.lineTo(400,50);
+                        ctx.lineTo(450,100);
+                        ctx.lineTo(400,150);
+                        ctx.fill();
+                        ctx.closePath();
+                        ctx.stroke();
+                      
+                    }
+                    else
+                    {
+                      alert("Error al crear el contexto");
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Conceptos básicos de CANVAS</h1>
+        <canvas id="miCanvas"width="500px"height="300px">
+            Tu navegador no soporta CANVAS
+        </canvas>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Borrar y dibujar</title>
+    <style>
+      #miCanvas {
+        border: dotted 2px yellow;
+        background: green;
+      }
+    </style>
+    <script>
+      var ctx;
+      var canvas;
+      var radio = 10;
+      var bolax = 100;
+      var bolay = 100;
+      var dx = 4;
+      window.onload = function () {
+        canvas = document.getElementById("miCanvas");
+        if (canvas && canvas.getContext) {
+          ctx = canvas.getContext("2d");
+          if (ctx) {
+            ctx.lineWidth = radio;
+            ctx.fillStyle = "red";
+            mueve();
+            setInterval(mueve, 60);
+          } else {
+            alert("Error al crear tu contexto");
+          }
+        }
+      };
+      function mueve() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        bolax += dx;
+        ctx.beginPath();
+        ctx.arc(bolax, bolay, radio, 0, 2 * Math.PI, true);
+        ctx.fill();
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Borrar y dibujar</h1>
+    <canvas id="miCanvas" width="500px" height="300px">
+      Tu navegador no soporta CANVAS
+    </canvas>
+  </body>
+</html>

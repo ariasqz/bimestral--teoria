@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Canvas Básico</title>
+        <style>
+            #miCanvas
+            {
+                border: dotted 3px yellow;
+                background: green;
+            }
+        </style>
+        <script>
+            window.onload=function()
+            {
+                var canvas = document.getElementById("miCanvas");
+                if(canvas && canvas.getContext){
+                    var ctx = canvas.getContext("2d");
+                    if(ctx)
+                    {
+                        canvas.onmousedown = function(e) {
+                        var posCanvas = canvas.get.BoundingclientRect ();
+                        var x = e.clientx - posCanvas.left;
+                        var y = e.clientY - posCanvas.top;
+                        alert("izq "+posCanvas.left+"\n"+
+                                "der "+posCanvas.right+"\n"+
+                                "top "+posCanvas.top+"\n"+
+                                "bot "+posCanvas.bottom+"\n"+
+                                "width "+posCanvas.width+"\n"+
+                                "height "+posCanvas.height+"\n"+
+                                "width "+canvas.width+"\n"+
+                                "height "+canvas.height+"\n"+
+                                "x "+X+"\n"+
+                                "y "+y+"\n"+
+                                "XX "+e.clientX+"\n"+
+                                "yy "+e.clientY
+                                );
+                        /*canvas.onmouseup = function(e){
+                            var x = e.clientX;
+                            var y = e.clientY;
+                            alert (x+" "+y);
+                        }*/
+                        /*canvas.onmousemove = function(e){
+                            var x =e.clientX;
+                            var y = e.clientY;
+                            alert (x+" "+y);
+                        }*/
+
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Conceptos básicos de CANVAS</h1>
+        <canvas id="miCanvas"width="500px"height="300px">
+            Tu navegador no soporta CANVAS
+        </canvas>
+    </body>
+</html>

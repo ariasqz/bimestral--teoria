@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Los principios de la animacion</title>
+        <style>
+            #miCanvas
+            {
+                border: dotted 2px yellow;
+                background: green;
+            }
+        </style>
+        <script>
+            var ctx;
+            var radio = 10;
+            var bolax = 50;
+            var bolay = 100;
+            window.onload=function()
+            {
+                var canvas = document.getElementById("miCanvas");
+                if(canvas && canvas.getContext){
+                    ctx = canvas.getContext("2d");
+                    if(ctx)
+                    {
+                        ctx.lineWidth = radio;
+                        ctx.fillStyle = "red";
+                        mueve();
+                        setInterval(mueve,60);
+                    }
+                    else
+                    {
+                      alert("Error al crear el contexto");
+                    }
+                }
+            }
+            function mueve()
+            {
+                bolax+=4;
+                ctx.beginPath();
+                ctx.arc(bolax,bolay,radio, 0, 2*Math.PI, true);
+                ctx.fill();
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Conceptos básicos de CANVAS</h1>
+        <canvas id="miCanvas"width="500px"height="300px">
+            Tu navegador no soporta CANVAS
+        </canvas>
+    </body>
+</html>

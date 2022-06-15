@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Canvas Básico</title>
+        <style>
+            #miCanvas
+            {
+                border: dotted 3px yellow;
+                background: green;
+            }
+        </style>
+        <script>
+            window.onload=function()
+            {
+                var canvas = document.getElementById("miCanvas");
+                if(canvas && canvas.getContext){
+                    var ctx = canvas.getContext("2d");
+                    if(ctx)
+                    {
+                        var imagen = new Image();
+                        //
+                        function procesaImagen()
+                        {
+                            ctx.drawImage(imagen,10,10);
+                        }
+                        //
+                        imagen.src = "./imagenes/descarga (1).jpeg";
+                        imagen.onload = function(e)
+                        {
+                            procesaImagen();
+                        }
+                    }
+                    else
+                    {
+                      alert("Error al crear el contexto");
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Conceptos básicos de CANVAS</h1>
+        <canvas id="miCanvas"width="500px"height="300px">
+            Tu navegador no soporta CANVAS
+        </canvas>
+    </body>
+</html>

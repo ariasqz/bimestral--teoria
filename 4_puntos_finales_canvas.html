@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>CANVAS 04</title>
+    <style>
+      #miCanvas {
+        border: dotted 2px yellow;
+        background: green;
+      }
+    </style>
+    <script>
+      var ctx;
+      var canvas;
+      var radio = 10;
+      var bolax = 100;
+      var bolay = 100;
+      var dx = 4;
+      var dy = 4;
+      var ancho, largo;
+      var limiteDerecha, limiteIzquierda, limiteArriba, limiteAbajo;
+      window.onload = function () {
+        canvas = document.getElementById("miCanvas");
+        if (canvas && canvas.getContext) {
+          ctx = canvas.getContext("2d");
+          if (ctx) {
+            ancho = canvas.width;
+            alto = canvas.height;
+            limiteDerecha = ancho - radio;
+            limiteIzquierda = radio;
+            //Calculamos los limites de arriba y abajo
+            limiteArriba = radio;
+            limiteAbajo = alto - radio;
+            //
+            ctx.lineWidth = radio;
+            ctx.fillStyle = "red";
+            mueve();
+            setInterval(mueve, 60);
+          } else {
+            alert("Error al crear tu contexto");
+          }
+        }
+      };
+      function mueve() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        verifica();
+        ctx.beginPath();
+        ctx.arc(bolax, bolay, radio, 0, 2 * Math.PI, true);
+        ctx.fill();
+      }
+      function verifica() {
+        var nbolax = bolax + dx;
+        var nbolay = bolay + dy;
+        if (nbolax > limiteDerecha) {
+          dx *= -1;
+          nbolax = limiteDerecha;
+        }
+        if (nbolax < limiteIzquierda) {
+          dx *= -1;
+          nbolax = limiteIzquierda;
+        }
+        //Calculamos la nueva coordenada en Y
+        if (nbolay > limiteAbajo) {
+          dy *= -1;
+          nbolay = limiteAbajo;
+        }
+        if (nbolay < limiteArriba) {
+          dy *= -1;
+          nbolay = limiteArriba;
+        }
+        bolax = nbolax;
+        bolay = nbolay;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Puntos finales de la animación</h1>
+    <canvas id="miCanvas" width="500px" height="300px">
+      Tu navegador no soporta CANVAS
+    </canvas>
+  </body>
+</html>

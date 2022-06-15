@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Canvas Básico</title>
+        <style>
+            #miCanvas
+            {
+                border: dotted 3px yellow;
+                background: green;
+            }
+        </style>
+        <script>
+            window.onload=function()
+            {
+                var canvas = document.getElementById("miCanvas");
+                if(canvas && canvas.getContext){
+                    var ctx = canvas.getContext("2d");
+                    if(ctx)
+                    {
+                        // Variables
+                        var bola= new Image();
+                        // Funciones
+                        function muestraPatron(repite)
+                        {
+                            ctx.font="7em Verdana";
+                            ctx.lineWidth=1.0;
+                            ctx.fillStyle="blue";
+                            ctx.strokeStyle="yellow";
+                            //
+                            var patron = ctx.createPattern(bola, repite);
+                            ctx.clearRect(0,0,canvas.width,canvas.height);
+                            ctx.fillStyle = patron;
+                            ctx.fillRect(0,0,canvas.width,canvas.height);
+                            //ctx.fillText("HOLA",15,150);
+                        }
+                        // Inicio
+                        bola.src="bola.png";
+                        bola.onload=function(e)
+                        {
+                            muestraPatron("repeat");
+                        }
+                    }
+                    else
+                    {
+                      alert("Error al crear el contexto");
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Conceptos básicos de CANVAS</h1>
+        <canvas id="miCanvas"width="500px"height="300px">
+            Tu navegador no soporta CANVAS
+        </canvas>
+    </body>
+</html>

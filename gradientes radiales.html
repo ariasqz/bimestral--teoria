@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Canvas Básico</title>
+        <style>
+            #miCanvas
+            {
+                border: dotted 3px yellow;
+                background: green;
+            }
+        </style>
+        <script>
+            window.onload=function()
+            {
+                var canvas = document.getElementById("miCanvas");
+                if(canvas && canvas.getContext){
+                    var ctx = canvas.getContext("2d");
+                    if(ctx)
+                    {
+                        var gradiente=ctx.createRadialGradient(canvas.width/2,
+                        canvas.height,
+                        10,
+                        canvas.width/2,
+                        0,
+                        100);
+                        gradiente.addColorStop(0,"pink");
+                        gradiente.addColorStop(0.15,"yellow");
+                        gradiente.addColorStop(0.35,"white");
+                        gradiente.addColorStop(0.65,"yellow");
+                        gradiente.addColorStop(1,"red");
+                        ctx.fillstyle=gradiente;
+                        ctx.fillRect(0,0,canvas.width,canvas.height);
+                        var gradiente=ctx.createRadialGradient(
+                        canvas.width/2,
+                        canvas.height/2,
+                        10,
+                        canvas.width/2,
+                        canvas.height/2,
+                        300);
+                        gradiente.addColorStop(0,"pink");
+                        gradiente.addColorStop(0.15,"yellow");
+                        gradiente.addColorStop(0.35,"white");
+                        gradiente.addColorStop(0.65,"yellow");
+                        gradiente.addColorStop(1,"red");
+                        ctx.fillStyle=gradiente;
+                        ctx.fillRect(0,0,canvas.width,canvas.height);
+                    }
+                    else
+                    {
+                      alert("Error al crear el contexto");
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Conceptos básicos de CANVAS</h1>
+        <canvas id="miCanvas"width="500px"height="300px">
+            Tu navegador no soporta CANVAS
+        </canvas>
+    </body>
+</html>
